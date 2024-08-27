@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -13,7 +14,7 @@ function App() {
         <Header />
         <Main weatherData={weatherData} />
       </div>
-      ;
+      <ModalWithForm />
     </div>
   );
 }
