@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "cold" });

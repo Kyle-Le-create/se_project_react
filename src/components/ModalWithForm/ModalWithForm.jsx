@@ -54,7 +54,6 @@ function ModalWithForm() {
             Add garment
           </button>
         </form>
-        ;
       </div>
     </div>
   );
