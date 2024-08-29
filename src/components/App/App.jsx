@@ -5,10 +5,17 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "" });
   const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+
+  const handleCardClick = () => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -27,6 +34,7 @@ function App() {
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
+        activeModal={activeModal}
         handleCloseClick={closeActiveModal}
         isOpen={activeModal === "add-garment"}
       >
@@ -44,7 +52,7 @@ function App() {
           <input
             type="Url"
             className="modal__input"
-            id="name"
+            id="imageURL"
             placeholder="Image URL"
           />
         </label>
