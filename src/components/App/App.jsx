@@ -68,7 +68,7 @@ function App() {
           />
         </label>
         <label htmlFor="imageUrl" className="modal__label">
-          Image{" "}
+          Image
           <input
             type="Url"
             className="modal__input"
