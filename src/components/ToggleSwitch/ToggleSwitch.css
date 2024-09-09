@@ -6,16 +6,16 @@
 
 .switch__box {
   border-radius: 25px;
-  border: 2px solid rgba(0, 0, 0, 0.5);
-  width: 50px;
+  border: 2px solid #7e7e7e;
+  width: 56px;
   height: 28px;
   appearance: none;
 }
 
 .switch__slider {
   border-radius: 20px;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   background-color: #000;
   color: #fff;
   text-align: center;
@@ -24,30 +24,30 @@
 }
 
 .switch__slider-F {
-  left: 20px;
+  left: 25px;
+  top: -1px;
 }
 
 .switch__slider-C {
-  left: 2px;
-}
-
-.switch__active {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 16px;
+  left: 1px;
+  top: -1px;
 }
 
 .switch__temp-F {
   position: absolute;
-  top: -10px;
+  top: -17px;
   right: 8px;
-  color: #f3f3f3;
-  font-family: "Cabinet Grotesk", arial;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .switch__temp-C {
   position: absolute;
-  top: -10px;
+  top: -17px;
   left: 8px;
-  color: #f3f3f3;
-  font-family: "Cabinet Grotesk", arial;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.switch__active {
+  color: #fff;
+  font: 16px;
 }
