@@ -9,6 +9,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -37,6 +38,10 @@ function App() {
     setActiveModal("");
   };
 
+  const onAddItem = (e) => {
+    console.log(e);
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -61,7 +66,7 @@ function App() {
           <Main weatherData={weatherData} handleCardClick={handleCardClick} />
           <Footer />
         </div>
-        <ModalWithForm
+        {/* <ModalWithForm
           title="New garment"
           buttonText="Add garment"
           activeModal={activeModal}
@@ -128,7 +133,14 @@ function App() {
               Cold
             </label>
           </fieldset>
-        </ModalWithForm>
+        </ModalWithForm> */}
+        {activeModal === "create" && (
+          <AddItemModal
+            onClose={closeActiveModal}
+            isOpen={activeModal === "add-garment"}
+            onAddItem={onAddItem}
+          />
+        )}
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
