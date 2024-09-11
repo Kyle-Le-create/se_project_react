@@ -36,7 +36,7 @@ function Header({
       </button>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
+          <p className="header__username">Kyle Le</p>
           <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
         </div>
       </Link>
