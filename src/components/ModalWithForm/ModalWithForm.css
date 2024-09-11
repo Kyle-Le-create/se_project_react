@@ -89,3 +89,13 @@
   background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .modal__content {
+    position: fixed;
+    top: 180px;
+    left: 16px;
+    width: calc(100% - 32px);
+    height: 463px;
+  }
+}
