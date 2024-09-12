@@ -17,29 +17,35 @@ function Header({
 
   return (
     <header className="header">
-      <Link to="/">
-        <img className="header__logo" src={logo} alt="Logo" />
-      </Link>
-      <p className="header__date-and-location">
-        {currentDate}, {weatherData.city}
-      </p>
-      <ToggleSwitch
-        currentTemperatureUnit={currentTemperatureUnit}
-        handleToggleSwitchChange={handleToggleSwitchChange}
-      />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-button"
-      >
-        + ADD CLOTHES
-      </button>
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">Kyle Le</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
-      </Link>
+      <nav className="header__content">
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
+        </Link>
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData.city}
+        </p>
+        <ToggleSwitch
+          currentTemperatureUnit={currentTemperatureUnit}
+          handleToggleSwitchChange={handleToggleSwitchChange}
+        />
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-button"
+        >
+          + ADD CLOTHES
+        </button>
+        <Link to="/profile" className="header__link">
+          <div className="header__user-container">
+            <p className="header__username">Kyle Le</p>
+            <img
+              src={avatar}
+              alt="Terrence Tegegne"
+              className="header__avatar"
+            />
+          </div>
+        </Link>
+      </nav>
     </header>
   );
 }

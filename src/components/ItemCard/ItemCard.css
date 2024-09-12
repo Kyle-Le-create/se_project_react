@@ -1,5 +1,6 @@
 .card {
   width: 323px;
+  height: 328px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -12,7 +13,7 @@
   position: absolute;
   top: 15px;
   margin: 0;
-  width: 49px;
+  min-width: 49px;
   font-family: "Cabinet-Grotesk", arial, sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -24,5 +25,13 @@
 }
 
 .card__image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 162px;
+  }
 }
