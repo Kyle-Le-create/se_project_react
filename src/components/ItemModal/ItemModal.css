@@ -2,13 +2,47 @@
   overflow: hidden;
   max-height: 610px;
   padding: 0;
+  position: relative;
+}
+
+.modal__content_type_image {
+  background: transparent url("../../assets/close-white.svg") center no-repeat;
 }
 
 .modal__image {
   width: 100%;
   height: 498px;
+  object-fit: cover;
+}
+
+.modal__caption {
+  margin: 0;
+}
+
+.modal__weather {
+  margin: 12px 0 0 0;
 }
 
 .modal__footer {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
   margin: 20px 0 32px 32px;
+  padding: 0;
+}
+
+.modal__delete {
+  color: #ff4d00;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal__delete:hover {
+  cursor: pointer;
 }
