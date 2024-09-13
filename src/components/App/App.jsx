@@ -45,25 +45,16 @@ function App() {
     setActiveModal("delete-confirmation");
   };
 
-  // const onAddItem = (e, values) => {
-  //   console.log(values);
-  // };
-
-  const handleAddItemSubmit = (item, resetForm) => {
-    setIsLoading(true);
-    addItem(item)
-      .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
-        resetForm();
-        closeActiveModal();
-      })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
-  };
-
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
+  const handleAddItemSubmit = (item) => {
+    return addItem(item).then((newItem) => {
+      setClothingItems([newItem, ...clothingItems]);
+      closeActiveModal();
+    });
   };
 
   const handleCardDelete = (card) => {
