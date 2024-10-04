@@ -3,12 +3,16 @@ import logo from "../../assets/logos.svg";
 import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 function Header({
   handleAddClick,
   weatherData,
   currentTemperatureUnit,
   handleToggleSwitchChange,
+  isLoggedIn,
+  handleLoginClick,
+  handleSignUpClick,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",

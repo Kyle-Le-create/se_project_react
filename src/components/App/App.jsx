@@ -12,6 +12,10 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItems, removeItem, addItem } from "../../utils/api";
 import DeleteModal from "../DeleteModal/DeleteModal";
+// import Register from "../RegisterModal/RegisterModal";
+// import Login from "../LoginModal/LoginModal";
+// import * as auth from "../../utils/auth";
+// import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,6 +31,43 @@ function App() {
   });
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+    _id: "",
+  });
+  console.log(currentUser);
+  const handleRegistration = ({ name, email, password, avatar }) => {
+    return auth
+      .register(name, password, email, avatar)
+      .then(() => {
+        handleLogin({ email, password });
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+  const handleLogin = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+    return auth
+      .authorize(email, password)
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          setToken(data.token);
+          api.getUserInfo(data.token).then((userData) => {
+            setCurrentUser(userData);
+            setIsLoggedIn(true);
+            closeActiveModal();
+            navigate("/profile");
+          });
+        }
+      })
+      .catch(console.error);
+  };
 
   const handleCardClick = (item) => {
     setActiveModal("preview");
@@ -78,11 +119,18 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((items) => {
-        setClothingItems(items);
+      .then(({ items }) => {
+        setClothingItems(items.reverse);
       })
       .catch(console.error);
   }, []);
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+  const handleSignUpClick = () => {
+    setActiveModal("register");
+  };
 
   return (
     <div className="page">
@@ -115,6 +163,20 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        {/* <Login
+          isOpen={activeModal === "login"}
+          onClose={closeActiveModal}
+          onLogin={handleLoginClick}
+          handleLogin={handleLogin}
+          setActiveModal={setActiveModal}
+        />
+        <Register
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
+          onSignup={handleSignUpClick}
+          handleRegistration={handleRegistration}
+          setActiveModal={setActiveModal}
+        /> */}
         <AddItemModal
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
@@ -126,6 +188,11 @@ function App() {
           onClose={closeActiveModal}
           openConfirmationModal={handleDeleteCardClick}
         />
+        {/* <EditProfileModal
+          onClose={closeActiveModal}
+          isOpen={activeModal === "edit-profile"}
+          onEditProfile={handleEditProfile}
+        /> */}
         <DeleteModal
           activeModal={activeModal}
           onClose={closeActiveModal}

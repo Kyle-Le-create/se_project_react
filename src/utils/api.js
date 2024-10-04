@@ -1,36 +1,64 @@
-const BASE_URL = "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
-export const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+}
+
+export const request = (url, headerInfo) => {
+  return fetch(url, headerInfo).then(checkResponse);
 };
 
 export const getItems = () => {
-  return fetch(`${BASE_URL}/items`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then(handleServerResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 };
 
-export const addItem = ({ name, weather, imageUrl }) => {
-  return fetch(`${BASE_URL}/items`, {
+export const postItem = (name, link, weather, token) => {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({
-      name,
-      weather,
-      imageUrl,
+      name: name,
+      weather: weather,
+      imageUrl: link,
     }),
-  }).then(handleServerResponse);
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
 };
 
-export const removeItem = (id) => {
-  return fetch(`${BASE_URL}/items/${id}`, {
+export const deleteItem = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+export const unlikeCard = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id}/likes/`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json; charset=UTF-8",
+      authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
+
+export const likeCard = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id}/likes/`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+export { baseUrl };
