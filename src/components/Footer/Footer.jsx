@@ -2,11 +2,11 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer>
-      <span className="footer">
-        <p className="footer__text">Developed by Kyle Le</p>
-        <p className="footer__text">2024</p>
-      </span>
+    <footer className="footer">
+      <ul className="footer__content">
+        <li className="footer__content-name">Designed by Kyle Le</li>
+        <li className="footer__content-year"> 2024</li>
+      </ul>
     </footer>
   );
 }

@@ -1,57 +1,90 @@
-.header {
-  display: flex;
-  align-items: center;
-  padding: 32px 0 28px;
-  font-family: "Cabinet-Grotesk", arial, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+@font-face {
+  src: url("../src/assets/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+  font-family: "Cabinet Grotesk";
 }
 
-.header__content {
+.header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  padding: 32px 0px 28px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  word-break: break-all;
 }
 
 .header__logo {
   margin-right: 24px;
 }
 
-.header__date-and-location {
-  margin: 0;
-}
-
-.header__add-clothes-button {
-  margin: 0 20px 0 auto;
-  border: none;
-  font-family: "Cabinet-Grotesk", arial, sans-serif;
+.header__add-clothes-btn {
+  margin-left: 20px;
+  margin-right: 20px;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  background-color: #f3f3f3;
-}
-
-.header__add-clothes-button:hover {
+  border: none;
+  font-family: "Cabinet Grotesk";
   cursor: pointer;
+  white-space: nowrap;
+}
+.header__add-clothes-btn:hover {
+  color: grey;
 }
 
-.header__user-container {
+.header__user {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-decoration: none;
-  color: #000;
 }
 
 .header__username {
   margin: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+  white-space: nowrap;
 }
 
+.header__date-and-location {
+  margin: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+}
 .header__link {
   text-decoration: none;
   color: black;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+}
+
+.header__signup-button {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  font-family: "Cabinet Grotesk";
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.header__login-button {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  font-family: "Cabinet Grotesk";
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.header__avatar {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
 }

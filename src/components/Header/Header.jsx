@@ -1,5 +1,6 @@
 import "./Header.css";
-import logo from "../../assets/logos.svg";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
@@ -8,8 +9,6 @@ import { useContext } from "react";
 function Header({
   handleAddClick,
   weatherData,
-  currentTemperatureUnit,
-  handleToggleSwitchChange,
   isLoggedIn,
   handleLoginClick,
   handleSignUpClick,
@@ -19,37 +18,59 @@ function Header({
     day: "numeric",
   });
 
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <header className="header">
-      <nav className="header__content">
-        <Link to="/">
-          <img className="header__logo" src={logo} alt="Logo" />
-        </Link>
-        <p className="header__date-and-location">
-          {currentDate}, {weatherData.city}
-        </p>
-        <ToggleSwitch
-          currentTemperatureUnit={currentTemperatureUnit}
-          handleToggleSwitchChange={handleToggleSwitchChange}
-        />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-button"
-        >
-          + ADD CLOTHES
-        </button>
+      <Link to="/">
+        <img className="header__logo" src={logo} alt="Logo" />
+      </Link>
+
+      <p className="header__date-and-location">
+        {currentDate}, {weatherData.city}
+      </p>
+      <ToggleSwitch />
+      {
+        (currentUser,
+        isLoggedIn && (
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+        ))
+      }
+      {isLoggedIn ? (
         <Link to="/profile" className="header__link">
-          <div className="header__user-container">
-            <p className="header__username">Kyle Le</p>
+          <div className="header__user">
+            <p className="header__username">{currentUser?.name}</p>
             <img
-              src={avatar}
-              alt="Terrence Tegegne"
+              src={currentUser?.avatar}
+              alt="image"
               className="header__avatar"
             />
           </div>
         </Link>
-      </nav>
+      ) : (
+        <div className="header__buttons-container">
+          <button
+            className="header__signup-button"
+            type="button"
+            onClick={handleSignUpClick}
+          >
+            Sign Up
+          </button>
+          <button
+            className="header__login-button"
+            type="button"
+            onClick={handleLoginClick}
+          >
+            Log In
+          </button>
+        </div>
+      )}
     </header>
   );
 }

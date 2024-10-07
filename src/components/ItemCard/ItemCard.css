@@ -1,37 +1,45 @@
 .card {
-  width: 323px;
-  height: 328px;
   position: relative;
+  width: 323px;
+  height: 326px;
   display: flex;
   justify-content: center;
-  border: solid 1px rgba(0, 0, 0, 0.3);
-  border-radius: 19px;
-  overflow: hidden;
+}
+
+.card__header {
+  position: absolute;
+  top: 15px;
+  display: flex;
+  gap: 10px;
 }
 
 .card__name {
-  position: absolute;
   top: 15px;
-  margin: 0;
-  min-width: 49px;
-  font-family: "Cabinet-Grotesk", arial, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
+  margin-left: 0;
+  padding: 2px 12px;
   background-color: #fff;
   border-radius: 4px;
-  padding: 2px 12px;
-  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  font-family: "Cabinet Grotesk";
+  text-align: center;
 }
 
 .card__image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 19px;
 }
 
-@media screen and (max-width: 480px) {
-  .card {
-    width: 162px;
-  }
+.card__like-button {
+  margin-left: 0px;
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__image:hover {
+  cursor: pointer;
 }
