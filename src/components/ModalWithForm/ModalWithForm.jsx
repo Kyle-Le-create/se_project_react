@@ -1,27 +1,35 @@
 import "./ModalWithForm.css";
-
+import closeBtn from "../../assets/close.svg";
 function ModalWithForm({
   children,
-  buttonText,
   title,
   isOpen,
   onClose,
   onSubmit,
+  switchButtonClick,
+  switchButtonText,
 }) {
+  function getModalClass() {
+    if (isOpen) {
+      return "modal_opened";
+    } else {
+      return "";
+    }
+  }
+
   return (
-    <div className={`modal  ${isOpen && "modal_opened"}`}>
+    <div className={`modal  ${getModalClass()}`}>
       <div className="modal__content">
-        <h2 className="modal__title">{title}</h2>
-        <button
-          onClick={onClose}
-          type="button"
-          className="modal__close"
-        ></button>
         <form className="modal__form" onSubmit={onSubmit}>
-          {children}
-          <button type="submit" className={`modal__submit  `}>
-            {buttonText}
+          <h2 className="modal__title">{title}</h2>
+          <button onClick={onClose} type="button" className="modal__close">
+            <img
+              src={closeBtn}
+              alt="close button"
+              className="modal__close-btn"
+            />
           </button>
+          {children}
         </form>
       </div>
     </div>

@@ -15,9 +15,6 @@ const Register = ({
     password: "",
     avatar: "",
   });
-  if (!isOpen) {
-    return null;
-  }
 
   const isFormValid = () => {
     return data.name && data.email && data.password && data.avatar;
@@ -37,14 +34,12 @@ const Register = ({
       return;
     }
     handleRegistration(data);
-
-    setData({
-      email: "",
-      password: "",
-      name: "",
-      avatar: "",
-    });
   };
+
+  useEffect(() => {
+    setData({ name: "", email: "", password: "", avatar: "" });
+  }, [isOpen]);
+
   return (
     <ModalWithForm
       title="Sign Up"
@@ -53,48 +48,48 @@ const Register = ({
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="signin-email" className="modal__label">
         Email*{" "}
         <input
           type="text"
           className="modal__input"
-          id="email"
+          id="signin-email"
           placeholder="Email"
           name="email"
           value={data.email}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="signin-password" className="modal__label">
         Password*{" "}
         <input
           type="text"
           className="modal__input"
-          id="password"
+          id="signin-password"
           placeholder="Password"
           name="password"
           value={data.password}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="singin-name" className="modal__label">
         Name*{" "}
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="signin-name"
           placeholder="Name"
           name="name"
           value={data.name}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="signin-avatar" className="modal__label">
         Avatar URL*{" "}
         <input
           type="url"
           className="modal__input"
-          id="avatar"
+          id="signin-avatar"
           placeholder="Avatar URL"
           name="avatar"
           value={data.avatar}

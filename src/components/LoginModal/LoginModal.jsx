@@ -29,12 +29,10 @@ const Login = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin(data);
-
-    setData({
-      email: "",
-      password: "",
-    });
   };
+  useEffect(() => {
+    setData({ email: "", password: "" });
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -44,12 +42,12 @@ const Login = ({
       onClose={onClose}
       switchButtonClick={() => setActiveModal("register")}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         Email*{" "}
         <input
           type="text"
           className="modal__input"
-          id="email"
+          id="login-email"
           required
           placeholder="Email"
           name="email"
@@ -57,12 +55,12 @@ const Login = ({
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         Password*{" "}
         <input
           type="text"
           className="modal__input"
-          id="password"
+          id="login-password"
           required
           placeholder="Password"
           name="password"

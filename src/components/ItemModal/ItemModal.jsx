@@ -1,24 +1,51 @@
 import "./ItemModal.css";
+import closeBtn from "../../assets/close.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemModal({ activeModal, onClose, card, openConfirmationModal }) {
+function ItemModal({
+  activeModal,
+  handleCloseClick,
+  card,
+  openDeleteModal,
+  isLoggedIn,
+}) {
+  const currentUser = useContext(CurrentUserContext);
+
+  const isOwn = card.owner === currentUser?._id;
+
+  const modalDeleteClassName = `item__delete-button ${
+    isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  }`;
   return (
-    <div className={`modal  ${activeModal == "preview" && "modal_opened"}`}>
+    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button
-          onClick={onClose}
+          onClick={handleCloseClick}
           type="button"
-          className="modal__close modal__close_type_image"
-        ></button>
-        <img src={card.imageUrl} alt={card.name} className="modal__image" />
+          className="modal__close"
+        >
+          <img src={closeBtn} alt="close button" className="modal__close-btn" />
+        </button>
+        <img src={card.imageUrl} alt="Image" className="modal__image" />
         <div className="modal__footer">
-          <div>
-            <h2 className="modal__caption">{card?.name}</h2>
-            <p className="modal__weather">Weather: {card?.weather}</p>
-          </div>
-          <button className="modal__delete" onClick={openConfirmationModal}>
-            Delete item
-          </button>
+          <h2 className="modal__caption">{card.name}</h2>
+
+          <p className="modal__weather">Weather: {card.weather}</p>
         </div>
+        {
+          (currentUser,
+          isLoggedIn && (
+            <button
+              onClick={() => {
+                openDeleteModal();
+              }}
+              className="card-item__delete-btn"
+            >
+              Delete Item
+            </button>
+          ))
+        }
       </div>
     </div>
   );

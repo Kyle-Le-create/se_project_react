@@ -1,22 +1,37 @@
-import "./Profile.css";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
+import Footer from "../Footer/Footer";
+import "./Profile.css";
 
-function Profile({ handleAddClick, handleCardClick, clothingItems }) {
+function Profile({
+  onCardClick,
+  clothingItems,
+  weatherData,
+  handleAddClick,
+  onCardLike,
+  handleLogOutClick,
+  handleEditProfileClick,
+  isLoggedIn,
+}) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar />
+        <SideBar
+          handleLogOutClick={handleLogOutClick}
+          handleEditProfileClick={handleEditProfileClick}
+        />
       </section>
-      <section className="profile__clothes-section">
+      <section className="profile__clothing-items">
         <ClothesSection
-          handleAddClick={handleAddClick}
-          handleCardClick={handleCardClick}
+          onCardClick={onCardClick}
           clothingItems={clothingItems}
+          weatherData={weatherData}
+          onCardLike={onCardLike}
+          handleAddClick={handleAddClick}
+          isLoggedIn={isLoggedIn}
         />
       </section>
     </div>
   );
 }
-
 export default Profile;

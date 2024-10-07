@@ -1,45 +1,48 @@
 .modal__content_type_image {
-  overflow: hidden;
-  max-height: 610px;
-  padding: 0;
-  position: relative;
-}
-
-.modal__content_type_image {
-  background: transparent url("../../assets/close-white.svg") center no-repeat;
+  padding: 0px;
 }
 
 .modal__image {
   width: 100%;
-  height: 498px;
-  object-fit: cover;
+  border-radius: 20px 20px 0 0;
 }
 
 .modal__caption {
-  margin: 0;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 0;
+  padding-top: 20px;
 }
 
 .modal__weather {
-  margin: 12px 0 0 0;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .modal__footer {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  margin: 20px 0 32px 32px;
-  padding: 0;
+  position: relative;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 550;
+  padding-left: 32px;
 }
 
-.modal__delete {
-  color: #ff4d00;
+.modal__close {
+  color: black;
+}
+
+.card-item__delete-btn {
+  color: red;
   border: none;
+  background: none;
   padding: 0;
   margin: 0;
-  background-color: transparent;
-  font-size: 20px;
-}
-
-.modal__delete:hover {
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  position: absolute;
+  outline: none;
   cursor: pointer;
+  bottom: 70px;
+  left: 380px;
 }
