@@ -3,7 +3,7 @@ import "./ToggleSwitch.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const ToggleSwitch = () => {
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
+  const { currentTempUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
 
@@ -16,21 +16,21 @@ const ToggleSwitch = () => {
       />
       <span
         className={
-          currentTemperatureUnit === "F"
+          currentTempUnit === "F"
             ? "switch__slider switch__slider-F"
             : "switch__slider switch__slider-C"
         }
       ></span>
       <p
         className={`switch__temp-F ${
-          currentTemperatureUnit === "F" && "switch__active"
+          currentTempUnit === "F" && "switch__active"
         }`}
       >
         F
       </p>
       <p
         className={`switch__temp-C ${
-          currentTemperatureUnit === "C" && "switch__active"
+          currentTempUnit === "C" && "switch__active"
         }`}
       >
         C
@@ -38,5 +38,4 @@ const ToggleSwitch = () => {
     </label>
   );
 };
-
 export default ToggleSwitch;
