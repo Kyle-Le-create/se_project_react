@@ -134,7 +134,7 @@ function App() {
 
     postItem(name, link, weather, token)
       .then((data) => {
-        setClothingItems((prev) => [data.data, ...prev]);
+        setClothingItems((prev) => [data, ...prev]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -172,18 +172,14 @@ function App() {
       ? likeCard(item._id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((card) =>
-                card._id === item._id ? updatedCard.data : card
-              )
+              cards.map((card) => (card._id === item._id ? updatedCard : card))
             );
           })
           .catch(console.error)
       : unlikeCard(item._id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((card) =>
-                card._id === item._id ? updatedCard.data : card
-              )
+              cards.map((card) => (card._id === item._id ? updatedCard : card))
             );
           })
           .catch(console.error);

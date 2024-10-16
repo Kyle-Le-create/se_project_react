@@ -31,6 +31,7 @@ const AddItemModal = ({
       alert("All fields are required");
       return;
     }
+
     onAddItem({ name, link, weather });
   };
   //clear inputs
